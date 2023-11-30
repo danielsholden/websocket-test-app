@@ -3,7 +3,7 @@ import { Chat } from './components/Chat';
 
 import styles from './App.module.scss';
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <div>
       <h3 className={styles.header}>Messages</h3>

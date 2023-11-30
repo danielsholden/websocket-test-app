@@ -2,7 +2,11 @@ import React from 'react';
 
 import styles from './Messages.module.scss';
 
-const Messages = ({
+type Props = {
+  messages: string[]
+};
+
+const Messages: React.FC<Props> = ({
   messages
 }) => {
   return (

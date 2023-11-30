@@ -2,16 +2,20 @@ import React from 'react';
 
 import styles from './MessageForm.module.scss';
 
-const MessageForm = ({
+type Props = {
+  onSumbit: (str: string) => void
+}
+
+const MessageForm: React.FC<Props> = ({
   onSumbit
 }) => {
   const [text, setText] = React.useState('');
 
-  const handleChange = (e) => setText(e.target.value);
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => setText(e.target.value);
 
-  const handleSubmit = (e, messageText) => {
+  const handleSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault();
-    onSumbit(messageText || text);
+    onSumbit(text);
     setText('');
   }
 
