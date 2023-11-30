@@ -1,0 +1,38 @@
+.messages {
+  width: 100%;
+  height: 300px;
+  border-bottom: 1px solid #a6a1a1;
+  position: relative;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.noMessages {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: #767171;
+}
+
+.msgText {
+  text-align: left;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e2d9d9;
+}
+
+.statusBar {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #e2d9d9;
+  background: #dbeeff;
+
+  span {
+    height: 8px;
+    width: 8px;
+    background: #0bb50b;
+    display: inline-block;
+    margin-left: 5px;
+    border-radius: 5px;
+  }
+}
