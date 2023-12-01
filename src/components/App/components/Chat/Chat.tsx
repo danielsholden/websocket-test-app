@@ -2,13 +2,19 @@ import React from 'react';
 
 import { Messages } from './components/Messages';
 import { MessageForm } from './components/MessageForm';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectMessages } from 'src/selectors/chat';
 
 import styles from './Chat.module.scss';
+import { addMessage } from 'src/actions/chat';
 
 const Chat: React.FC = () => {
-  const [messages, setMessages] = React.useState([]);
+  const messages = useSelector(selectMessages);
+  const dispatch = useDispatch();
 
-  const handleSubmit = (text: string): void => setMessages([...messages, text]);
+  const handleSubmit = (text: string): void => {
+    dispatch(addMessage(text));
+  }
 
   return (
     <div className={styles.chatContainer}>

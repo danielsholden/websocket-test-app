@@ -1,6 +1,8 @@
 import React from 'react';
 
 import styles from './Messages.module.scss';
+import { useSelector } from 'react-redux';
+import { selectConnectionStatus } from 'src/selectors/chat';
 
 type Props = {
   messages: string[]
@@ -9,9 +11,11 @@ type Props = {
 const Messages: React.FC<Props> = ({
   messages
 }) => {
+  const connectionStatus = useSelector(selectConnectionStatus);
+  const status = connectionStatus ? 'Connected' : 'Disconnected';
   return (
     <div>
-      <div className={styles.statusBar}>Connection status: <span/></div>
+      <div className={styles.statusBar}>Connection status: {status}<span/></div>
       <div className={styles.messages}>
         {messages.map((text, idx) => (
           <div key={idx} className={styles.msgText}>{text}</div>
