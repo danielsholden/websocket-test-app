@@ -3,17 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { selectConnectionStatus } from 'src/selectors/chat';
 import { WebSocketAPI } from 'src/services/webSocket';
-import { changeConnectionStatus } from 'src/actions/chat';
+import { addMessage, changeConnectionStatus } from 'src/actions/chat';
 
 import styles from './MessageForm.module.scss';
 
-type Props = {
-  onSumbit: (str: string) => void
-}
-
-const MessageForm: React.FC<Props> = ({
-  onSumbit
-}) => {
+const MessageForm: React.FC = () => {
   const [text, setText] = React.useState('');
   const wsIsConnected = useSelector(selectConnectionStatus);
   const dispatch = useDispatch();
@@ -24,7 +18,7 @@ const MessageForm: React.FC<Props> = ({
     e.preventDefault();
     if (wsIsConnected) {
       WebSocketAPI.sendMessage(text);
-      onSumbit(text);
+      dispatch(addMessage(text));
       setText('');
     } else {
       // message here
