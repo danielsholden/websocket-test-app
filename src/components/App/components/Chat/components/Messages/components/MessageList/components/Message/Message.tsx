@@ -9,6 +9,7 @@ type Props = {
 };
 
 const Message: React.FC<Props> = (props) => {
+  console.log('re-render message - ', props.text);
   return (
     <div className={styles.msgText}>
       <SafeHtmlParser>{props.text}</SafeHtmlParser>
