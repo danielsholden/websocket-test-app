@@ -30,9 +30,17 @@
   span {
     height: 8px;
     width: 8px;
-    background: #0bb50b;
+    
     display: inline-block;
     margin-left: 5px;
     border-radius: 5px;
+
+    &.green { 
+      background: #0bb50b;
+    }
+
+    &.red {
+      background: red;
+    }
   }
 }

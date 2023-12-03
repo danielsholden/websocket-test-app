@@ -16,6 +16,10 @@
   border: 1px solid #9a9595;
   resize: none;
   outline: none;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
 .actions {
@@ -40,6 +44,10 @@
     &:last-child {
       flex-grow: 1;
       background: #6969f7;
+    }
+
+    &:disabled {
+      opacity: 0.5;
     }
   }
 }
