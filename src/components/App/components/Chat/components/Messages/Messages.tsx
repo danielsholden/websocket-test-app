@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 import { selectConnectionStatus } from 'src/selectors/chat';
+import { SafeHtmlParser } from 'src/components/App/components/SafeHtmlParser';
 
 import styles from './Messages.module.scss';
 
@@ -21,7 +22,9 @@ const Messages: React.FC<Props> = ({
       </div>
       <div className={styles.messages}>
         {messages.map((text, idx) => (
-          <div key={idx} className={styles.msgText}>{text}</div>
+          <div key={idx} className={styles.msgText}>
+            <SafeHtmlParser>{text}</SafeHtmlParser>
+          </div>
         ))}
         {!messages.length && <p className={styles.noMessages}>No messages yet</p>}
       </div>
