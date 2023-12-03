@@ -3,8 +3,11 @@ import { AnyAction, Dispatch } from '@reduxjs/toolkit';
 import { config } from '../../config';
 import { changeConnectionStatus, addMessage } from 'src/actions/chat';
 
+const MAX_CONNECTION_ATTEMPTS = 2;
+
 export class WebSocketAPI {
   static socket: WebSocket = null;
+  static failedAttempts = 0;
 
   static createConnection = (dispatch: Dispatch<AnyAction>): Promise<WebSocket> =>
     new Promise((resolve, reject) => {
@@ -16,19 +19,32 @@ export class WebSocketAPI {
         resolve(socket);
       };
 
-      socket.onerror = (message: MessageEvent) => {
-        console.log('error');
-        reject(message);
-      };
-
       socket.onmessage = (messageEvent: MessageEvent) => {
         dispatch(addMessage(messageEvent.data));
       };
 
+      socket.onerror = (message: MessageEvent) => {
+        reject(message);
+        WebSocketAPI.reconnectWS(dispatch);
+      };
+
       socket.onclose = () => {
-        console.log('ws connection is closed');
+        WebSocketAPI.reconnectWS(dispatch);
       };
     });
+
+  static reconnectWS = async (dispatch: Dispatch<AnyAction>) => {
+    dispatch(changeConnectionStatus(false));
+
+    if (WebSocketAPI.failedAttempts < MAX_CONNECTION_ATTEMPTS) {
+      WebSocketAPI.failedAttempts += 1;
+      try {
+        await WebSocketAPI.createConnection(dispatch);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
 
   static sendMessage = (text: string): void => {
     const { socket } = WebSocketAPI;

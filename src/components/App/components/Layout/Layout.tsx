@@ -13,8 +13,16 @@ type Props = {
 const Layout: React.FC<Props> = (props) => {
   const dispatch = useDispatch();
 
+  const createConnect = async () => {
+    try {
+      await WebSocketAPI.createConnection(dispatch);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   React.useEffect(() => {
-    WebSocketAPI.createConnection(dispatch);
+    createConnect();
   }, []);
 
   return (

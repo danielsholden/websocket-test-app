@@ -24,27 +24,15 @@
 
 .actions {
   display: flex;
+  justify-content: end;
 
   button {
     cursor: pointer;
     color: white;
-    padding: 8px 8px;
+    padding: 8px 17px;
     border: none;
     border-radius: 18px;
-
-    &:first-child {
-      background: red;
-    }
-
-    &:nth-child(2) {
-      margin: 0 10px;
-      background: green;
-    }
-
-    &:last-child {
-      flex-grow: 1;
-      background: #6969f7;
-    }
+    background: #6969f7;
 
     &:disabled {
       opacity: 0.5;
