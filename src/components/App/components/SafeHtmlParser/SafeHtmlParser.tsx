@@ -9,9 +9,13 @@ type Props = {
 const SafeHtmlParser: React.FC<Props> = (props) => {
   const purifiedHtml = dompurify.sanitize(props.children, {}).toString();
 
-  return (
-    <div dangerouslySetInnerHTML={{ __html: purifiedHtml }} />
-  )
+  if (purifiedHtml) {
+    return (
+      <div dangerouslySetInnerHTML={{ __html: purifiedHtml }} />
+    )
+  }
+
+  return <div>POTENTIAL XSS ATACK!</div>
 };
 
 export default React.memo(SafeHtmlParser);

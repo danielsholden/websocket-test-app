@@ -5,6 +5,7 @@
   position: relative;
   padding: 10px;
   box-sizing: border-box;
+  overflow: auto;
 }
 
 .noMessages {
@@ -12,13 +13,6 @@
   bottom: 0;
   width: 100%;
   color: #767171;
-}
-
-.msgText {
-  text-align: left;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #e2d9d9;
 }
 
 .statusBar {
