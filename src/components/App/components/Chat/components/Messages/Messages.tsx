@@ -1,6 +1,6 @@
 import React from 'react';
-
 import { useSelector } from 'react-redux';
+
 import { selectConnectionStatus } from 'src/selectors/chat';
 import { Message } from './Message';
 

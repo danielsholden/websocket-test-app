@@ -1,5 +1,4 @@
 import React from 'react';
-
 import dompurify from 'dompurify';
 
 type Props = {

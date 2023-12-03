@@ -1,6 +1,6 @@
 import React from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
+
 import { selectConnectionStatus } from 'src/selectors/chat';
 import { WebSocketAPI } from 'src/services/webSocket';
 import { changeConnectionStatus } from 'src/actions/chat';

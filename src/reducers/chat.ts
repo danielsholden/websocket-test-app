@@ -1,4 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
+
 import { addMessage, changeConnectionStatus } from 'src/actions/chat';
 import { IChatState } from 'src/types';
 

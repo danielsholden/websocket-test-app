@@ -1,9 +1,9 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import { WebSocketAPI } from 'src/services/webSocket';
 
 import styles from './Layout.module.scss';
-import { useDispatch } from 'react-redux';
 
 type Props = {
   children: React.ReactNode;

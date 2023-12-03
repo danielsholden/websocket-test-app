@@ -1,6 +1,6 @@
 import { AnyAction, Dispatch } from '@reduxjs/toolkit';
-import { config } from '../../config';
 
+import { config } from '../../config';
 import { changeConnectionStatus, addMessage } from 'src/actions/chat';
 
 export class WebSocketAPI {

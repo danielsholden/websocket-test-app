@@ -1,10 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import { store } from '../../reducers/store';
-
 import { Layout } from './components/Layout';
 import { Chat } from './components/Chat';
+
+import { store } from '../../reducers/store';
 
 const App: React.FC = () => {
   return (

@@ -1,12 +1,12 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { Messages } from './components/Messages';
 import { MessageForm } from './components/MessageForm';
-import { useSelector, useDispatch } from 'react-redux';
 import { selectMessages } from 'src/selectors/chat';
+import { addMessage } from 'src/actions/chat';
 
 import styles from './Chat.module.scss';
-import { addMessage } from 'src/actions/chat';
 
 const Chat: React.FC = () => {
   const messages = useSelector(selectMessages);
