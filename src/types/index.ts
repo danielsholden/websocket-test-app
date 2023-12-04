@@ -7,3 +7,7 @@ export type Message = {
   id: number;
   message: string;
 };
+
+export interface IToastState {
+  text: string;
+}

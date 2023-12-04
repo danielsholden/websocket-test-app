@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectConnectionStatus } from 'src/selectors/chat';
 import { WebSocketAPI } from 'src/services/webSocket';
 import { addMessage } from 'src/actions/chat';
+import { updateToast } from 'src/actions/toast';
 
 import styles from './MessageForm.module.scss';
 
@@ -21,7 +22,7 @@ const MessageForm: React.FC = () => {
       dispatch(addMessage({ message: text, id: Date.now() }));
       setText('');
     } else {
-      // toast is here
+      dispatch(updateToast('Messaging is unavailable'));
     }
   };
 

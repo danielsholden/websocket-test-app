@@ -1,15 +1,27 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { selectToastText } from 'src/selectors/toast';
+import { updateToast } from 'src/actions/toast';
 
 import styles from './Toast.module.scss';
 
 const Toast: React.FC = () => {
-  const [showToast, setShowToast] = React.useState(false);
-  const toastClasses = `${styles.toast} ${showToast ? styles.visible : styles.hidden}`;
+  const toastText = useSelector(selectToastText);
+  const dispatch = useDispatch();
+
+  const toastClasses = `${styles.toast} ${toastText ? styles.visible : styles.hidden}`;
+
+  React.useEffect(() => {
+    if (toastText) {
+      setTimeout(() => dispatch(updateToast('')), 5000);
+    }
+  }, [toastText]);
 
   return (
-    <div className={styles.toastContainer} onClick={() => setShowToast(!showToast)}>
+    <div className={styles.toastContainer}>
       <div className={toastClasses}>
-        Toast
+        {toastText}
       </div>
     </div>
   );

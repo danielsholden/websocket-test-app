@@ -2,8 +2,9 @@ import { AnyAction, Dispatch } from '@reduxjs/toolkit';
 
 import { config } from '../../config';
 import { changeConnectionStatus, addMessage } from 'src/actions/chat';
+import { updateToast } from 'src/actions/toast';
 
-const MAX_CONNECTION_ATTEMPTS = 2;
+const MAX_CONNECTION_ATTEMPTS = 1;
 
 export class WebSocketAPI {
   static socket: WebSocket = null;
@@ -41,7 +42,7 @@ export class WebSocketAPI {
       try {
         await WebSocketAPI.createConnection(dispatch);
       } catch (error) {
-        console.log(error);
+        dispatch(updateToast('Reconnection attempt failed'));
       }
     }
   };

@@ -14,7 +14,7 @@ const SafeHtmlParser: React.FC<Props> = (props) => {
     )
   }
 
-  return <div>POTENTIAL XSS ATACK!</div>
+  return <div>Message is hidden (potential XSS attack)</div>
 };
 
 export default React.memo(SafeHtmlParser);

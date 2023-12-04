@@ -2,9 +2,10 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { WebSocketAPI } from 'src/services/webSocket';
+import { Toast } from '../Toast';
+import { updateToast } from 'src/actions/toast';
 
 import styles from './Layout.module.scss';
-import { Toast } from '../Toast';
 
 type Props = {
   children: React.ReactNode;
@@ -17,7 +18,7 @@ const Layout: React.FC<Props> = (props) => {
     try {
       await WebSocketAPI.createConnection(dispatch);
     } catch (error) {
-      console.error(error);
+      dispatch(updateToast('Connection attempt failed'));
     }
   }
 
