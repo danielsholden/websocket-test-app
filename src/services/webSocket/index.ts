@@ -20,7 +20,7 @@ export class WebSocketAPI {
       };
 
       socket.onmessage = (messageEvent: MessageEvent) => {
-        dispatch(addMessage(messageEvent.data));
+        dispatch(addMessage(JSON.parse(messageEvent.data)));
       };
 
       socket.onerror = (message: MessageEvent) => {

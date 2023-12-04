@@ -20,7 +20,7 @@ const MessageList: React.FC = () => {
 
   return (
     <div className={styles.messages}>
-      {messages.map((message, idx) => <Message key={idx} text={message} />)}
+      {messages.map((m) => <Message key={m.id} text={m.message} />)}
       {!messages.length && <p className={styles.noMessages}>No messages yet</p>}
       <div ref={containerRef} />
     </div>

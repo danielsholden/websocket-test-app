@@ -12,11 +12,11 @@ const initialState: IChatState = {
 
 const updateConnectionStatus = (state, event) => {
   return ({ ...state, connectionStatus: event.payload });
- }
+};
 
-const updateMessages = (state, event) => {
- return ({ ...state, messages: [...state.messages, event.payload] });
-}
+const updateMessages = (state, { payload }) => {
+ return ({ ...state, messages: [...state.messages, { message: payload.message, id: payload.id }] });
+};
 
 export const reducer = createReducer(initialState, (builder) => {
   builder.addCase(addMessage, updateMessages).addCase(changeConnectionStatus, updateConnectionStatus);

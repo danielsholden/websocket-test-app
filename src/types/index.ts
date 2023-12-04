@@ -1,9 +1,9 @@
 export interface IChatState {
   connectionStatus: boolean;
-  messages: string[];
+  messages: Message[];
 }
 
-// export type Message = {
-//   id: string;
-//   text: string;
-// };
+export type Message = {
+  id: number;
+  message: string;
+};

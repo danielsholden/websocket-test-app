@@ -18,7 +18,7 @@ const MessageForm: React.FC = () => {
     e.preventDefault();
     if (wsIsConnected) {
       WebSocketAPI.sendMessage(text);
-      dispatch(addMessage(text));
+      dispatch(addMessage({ message: text, id: Date.now() }));
       setText('');
     } else {
       // toast is here
